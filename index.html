@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pop It</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta property="og:title" content="Pop It"/>
+    <meta property="og:site_name" content="Pop It"/>
+    <meta property="og:description" content="Pop up Card Maker"/>
+    <meta property="og:image" content="preview.png">
+    <!-- no cache headers -->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <!-- end no cache headers -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/dat-gui-light-theme.css" rel="stylesheet">
+    <link href="css/webOAcard.css" rel="stylesheet">
+
+    <!-- Add fancyBox CSS files -->
+    <link href="lib/fancyBox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" media="screen" />
+
+    <style></style>
+</head>
+
+<body>
+
+<!-- <div id="tutorialDiv">
+    <a class="videoLink gif" href="javascript:;" target="_blank">
+        <i class="fa fa-rocket"></i>
+        Quick Guide
+    </a>
+
+    <a class="videoLink youtube" href="https://www.youtube.com/watch?v=TKUqK5zyhHU">
+        <i class="fa fa-youtube-play"></i>
+        Tutorial
+    </a>
+
+</div> -->
+ 
+<div id="container">
+   <div id="loadingMask"><i class="fa fa-circle-o-notch fa-spin"></i></div>
+</div>
+
+<div id="tip" class="modeSel display hide">
+    <ul class="task-list">
+    <li class="modeTip edit">
+    <p>Edit mode</p>
+        <ul class="task-list">
+        <li>left key : add points on edit grid to create a contour</li>
+        <li>right key : switch to Display mode</li>
+        <li>scroll : change depth of edit grid</li>
+        </ul>
+    </li>
+     
+    <li class="modeTip contouring">
+    <p>Contour editing</p>
+        <ul class="task-list">
+        <li>left key : add points or close contour (connect to the start point or press ctrl key )</li>
+        <li>right key : undo the last point</li>
+        </ul>
+    </li>
+
+    <li class="modeTip contoured">
+    <p>Contour closed</p>
+         <ul class="task-list">
+        <li>left key : use contour to create a Face/Pull/Hole (select from GUI)</li>
+        <li>right key : drag to move the contour</li>
+        <li>scroll : change the depth of edit grid</li>
+        </ul>
+    </li>
+
+    <li class="modeTip display"> 
+    <p>Display mode</p>
+        <ul class="task-list">
+        <li>left key : move the camera</li>
+        <li>right key : switch to Edit mode</li>
+        <li>scroll : change the card angle</li>
+        </ul>
+    </li>
+    </ul>
+</div>
+
+    <div id="imgContainer">
+        <img style="">
+        <a href="" download="card.png">download</a>
+    </div>
+
+    <div id="fileUIContainer"></div>
+
+ <!--a id="ta" href="" download="card.txt" style="position:absolute; font-size:30; left:200px; z-index:9999;">TTTTT</a-->
+
+<div id="previewUIwrapper" class="Clr-333">
+     <div id="previewUI" style=" ">
+        <div id="container2D" style=""></div>
+        <a href="javascript:void(0)" id="download2D" style="">
+        <i class="fa fa-arrow-circle-o-down fa-2x"></i>
+         </a>
+    </div>
+</div>
+
+
+<div id="shareArea">
+  <div class="others">
+<a id="tipBtn">
+<i class="fa fa-question-circle"></i>
+</a>
+
+    <!-- <a href="https://github.com/caa1211/webOAcard" target="_blank" ><i class="fa fa-github"></i></a>
+    <a href="https://www.facebook.com/caa1211" target="_blank" ><i class="fa fa-facebook-square"></i></a> -->
+  </div>
+    <!-- <a style=" " id="googleBadge" target="_blank" href="http://www.chromeexperiments.com/detail/3d-pop-up-card/"> -->
+    <!-- <img src="img/badges/b2.png" alt="See my Experiment on ChromeExperiments.com"> -->
+    </a>
+</div>
+
+<a id="modeText" style="" href="javascript:void(0);">  </a>
+<input type="file" id="fileUpload" style="display:none;" />
+    <script src="js/three.min.js"></script>
+    <script src="js/stats.min.js"></script>
+    <script src="js/Detector.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="js/jquery.prettySocial.min.js"></script>
+
+    <!--script src="js/underscore-min.js"></script-->
+    <script src="js/jquery.mousewheel.min.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/Javascript_Clipper_6.1.3.2/clipper.js"></script>
+
+    <script src="js/helvetiker_font/helvetiker_bold_italic.typeface.js"></script>
+    <script src="js/helvetiker_font/helvetiker_bold.typeface.js"></script>
+    <script src="js/helvetiker_font/helvetiker_italic.typeface.js"></script>
+    <script src="js/helvetiker_font/helvetiker_regular.typeface.js"></script>
+
+    <!-- fancyBox JS files -->
+    <script src="lib/fancyBox/jquery.fancybox.js?v=2.1.5"></script>
+    <script src="lib/fancyBox/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+
+    <!--script src="js/typeface/mickey_m_tfb_regular.typeface.js"></script>
+    <script src="js/typeface/jigsaw_pieces_tfb_regular.typeface.js"></script>
+    <script src="js/typeface/cityscape-_regular.typeface.js"></script>
+    <script src="js/typeface/housing_regular.typeface.js"></script-->
+
+    <!--script src="js/oa.core.js"></script>
+    <script src="js/oa.model.js"></script>
+    <script src="js/oa.face.js"></script>
+    <script src="js/oa.contour.js"></script>
+    <script src="js/oa.exContour.js"></script>
+    <script src="js/oa.clipper.js"></script>
+    <script src="js/oa.point.js"></script>
+    <script src="js/oa.contourRepo.js"></script>
+    <script src="js/webOAcard.js"></script-->
+    <script>
+    //no-cache js
+    var scriptList = [
+        "js\/oa.core.js",
+        "js\/oa.model.js",
+        "js\/oa.face.js",
+        "js\/oa.contour.js",
+        "js\/oa.exContour.js",
+        "js\/oa.clipper.js",
+        "js\/oa.point.js",
+        "js\/oa.contourRepo.js",
+        "js\/webOAcard.js",
+        "js\/demo.js"
+    ];
+    for(var i=0; i<scriptList.length; i++){
+     document.write('<script src="'+ scriptList[i] +'"?v='+new Date().getMilliseconds()+'><\/script>');
+    }
+
+
+    // Tutorials
+    $("#tutorialDiv .gif").click(function(){
+        $.fancybox.open('preview.gif');
+    });
+
+    $("#tutorialDiv .youtube").attr('rel', 'media-gallery')
+            .fancybox({
+                openEffect : 'none',
+                closeEffect : 'none',
+                prevEffect : 'none',
+                nextEffect : 'none',
+
+                arrows : false,
+                helpers : {
+                    media : {},
+                    buttons : {}
+                }
+            });
+    </script>
+
+
+
+<div class="social-container" style="position:absolute; z-index: 99999; bottom: 10px;">
+    <div class="links">
+        <a href="#" data-type="facebook" data-url="http://caa1211.github.io/webOAcard/" data-title="Organic architecture online builder" data-description="Custom share buttons for Pinterest, Twitter, Facebook and Google Plus." data-media="preview.png" class="prettySocial fa fa-facebook"></a>
+        <a href="#" data-type="googleplus" data-url="http://caa1211.github.io/webOAcard/" data-description="Organic architecture online builder" class="prettySocial fa fa-google-plus"></a>
+        <a href="#" data-type="twitter" data-url="http://caa1211.github.io/webOAcard/" data-description="Organic architecture online builder" data-via="sonnyt" class="prettySocial fa fa-twitter"></a>
+        <a href="#" data-type="pinterest" data-url="http://caa1211.github.io/webOAcard/" data-description="Organic architecture online builder" data-media="preview.png" class="prettySocial fa fa-pinterest"></a>
+        <a href="#" data-type="linkedin" data-url="http://caa1211.github.io/webOAcard/" data-title="OA Card - build your pop-up card" data-description="Organic architecture online builder" data-via="caa" data-media="http://caa1211.github.io/webOAcard/preview.png" class="prettySocial fa fa-linkedin"></a>
+    </div>
+
+    <script type="text/javascript">
+        $('.prettySocial').prettySocial();
+    </script>
+</div>
+
+    </body>
+
+    </html>

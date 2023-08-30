@@ -1,0 +1,516 @@
+body {
+    font-family: Monospace;
+    background-color: #f0f0f0;
+    margin: 0px;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: Quicksand;
+    src: url(../fonts/quicksand/Quicksand-Light.otf);
+    font-weight:400;
+}
+/* Usage */
+body {
+    font-family: "Quicksand", Arial, Sans-serif;
+}
+
+#modeText {
+    text-shadow: -1px 0px 15px rgba(200, 200, 200, 0.3);
+    font-size:40px;
+    right: 240px;
+    position:absolute;
+    z-index:99;
+    top:45%;
+    color: #cccccc;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 10px;
+    border-radius: 6px;
+    opacity: 0.5;
+    width: 120px;
+    text-align: center;
+    background: #398ADF;
+    font-weight: 900;
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(50, 50, 50, 0.57);
+    -moz-box-shadow:    0px 0px 14px 0px rgba(50, 50, 50, 0.57);
+    box-shadow:         0px 0px 14px 0px rgba(50, 50, 50, 0.57);
+}
+
+#modeText:hover{
+    color: #bbb;
+    opacity: 0.8;
+}
+
+
+body .dg.ac {
+    z-index: 500;
+}
+
+body .dg.a {
+    margin-right: 0px;
+}
+
+#download2D{
+    opacity:0.0;
+    left:0px;
+    top:0px;
+    color: #333333;
+    position: absolute;
+    z-index:10;
+    width:100%;
+    height:100%;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+#download2D > i.fa{
+    font-size:80px;
+    width:100%;
+    text-align: center;
+    margin-top: 40px;
+    color: #eeeeee;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+#download2D:hover{
+    opacity: 0.5;
+    background: #888888;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+#download2D:hover > i.fa{
+    margin-top: 55px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+#previewUI{
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    /*     -webkit-box-shadow: 0px 0px 20px -6px rgba(0,0,0,0.64);
+         -moz-box-shadow: 0px 0px 20px -6px rgba(0,0,0,0.64);
+         box-shadow: 0px 0px 20px -6px rgba(0,0,0,0.64);*/
+    border: solid 1px #4a4a4a;
+    width:150px;
+    height:185px;
+    display: block;
+    position: relative;
+    z-index:50;
+    top: 5px;
+    margin: 0 auto 20px auto;
+}
+#imgContainer{
+    display: none;
+    right:300px;
+    overflow:hidden;
+    z-index: 3;
+    border: solid 1px red;
+    position: absolute;
+    top:0px;
+    width:200px;
+    height:200px
+}
+#imgContainer > img {
+    width:100%; height:100%; display:absolute; top:0px;
+}
+
+#imgContainer > a {
+    z-index:30; font-size:10px;position:absolute; top:0px;
+}
+
+
+#container{
+    z-index: 1; left:0px; top:0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+
+}
+
+#container2D{
+    overflow:hidden;  width:100%;; height:100%;
+}
+
+#fileUIContainer{
+    height:auto;
+    position:absolute;
+    z-index:999;
+    top: 15%;
+    left:10px;
+    opacity: 1;
+    font-weight: 300;
+    width: 180px;
+}
+
+#fileUIContainer .dg.main{
+    max-width: 180px;
+}
+
+#fileUIContainer .property-name {
+    width: 100%;
+    ext-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+body #fileUIContainer .dg .cr.function:hover,
+body #fileUIContainer .dg ul.closed li.title:hover,
+body #fileUIContainer .dg li.title:hover{
+    /*background: #FFFFBB;*/
+    border: 1px solid #aaa;
+}
+
+body #fileUIContainer .dg li:not(.folder), body #fileUIContainer .dg .cr.function {
+    padding-left: 0px;
+    border-radius: 4px;
+    border: solid 1px #cccccc;
+    background: none;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 40px;
+    vertical-align: middle;
+    margin-top:5px;
+}
+
+body #fileUIContainer .number.has-slider span{
+    width: 30%;
+}
+body #fileUIContainer .number.has-slider .c{
+    width: 65%;
+}
+
+body #fileUIContainer .dg li.folder{
+    width: 95%;
+}
+
+#fileUIContainer .recentFolder,
+body #fileUIContainer .folder .dg{
+    padding-bottom: 5px;
+    max-height: 200px;
+    overflow: auto;
+    margin-right: 5px;
+    width: 95%;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 0px 0px 4px 4px;
+    box-shadow: inset 0px 0px 3px 0px #ABABAB;
+    -webkit-box-shadow: inset 0px 0px 3px 0px #ABABAB;
+    -moz-box-shadow: inset 0px 0px 3px 0px #ABABAB;
+    -o-box-shadow: inset 0px 0px 3px 0px #ABABAB;
+}
+
+body .recentFolder::-webkit-scrollbar {
+    background: transparent;
+    width: 5px;
+}
+
+body .recentFolder::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 4px;
+}
+
+body #fileUIContainer .dg li:not(.folder),
+body #fileUIContainer .dg .recentItem.cr.function{
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+body #fileUIContainer .dg li.title {
+    font-size: 20px;
+    line-height: 22px;
+    vertical-align: middle;
+    border: solid 1px #cccccc;
+    border-radius: 4px;
+    background: none;
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    top:auto;
+    margin-top: -39px;
+    right: 10px;
+    padding: 0;
+}
+
+body #fileUIContainer .dg .c select,
+body #fileUIContainer .dg .c input[type=text],
+body #fileUIContainer .dg .cr.number input[type=text] {
+    background: #ccc;
+    color: #999;
+    border: 0;
+    font-size: 12px;
+    height:15px;
+}
+
+body #fileUIContainer .dg ul.closed li.title {
+    margin-top: -34px;
+}
+
+body #fileUIContainer .dg ul.closed li:not(.title),
+body #fileUIContainer .dg ul.closed  li.recentItem.cr.function{
+    height: 0px;
+    border: 0;
+    margin-top: 0px;
+}
+
+body #fileUIContainer .dg .c .slider-fg {
+    background: #ccc;
+}
+
+#fileUIContainer .dg .c .slider {
+    background: none;
+    cursor: ew-resize;
+    border: solid 1px #ccc;
+    height: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+body #fileUIContainer .dg li.title:before {
+    font-size: 18px;
+    vertical-align: middle;
+    content: "\f077";
+    font-family: FontAwesome;
+    padding-left: 10px;
+    padding-right:10px;
+    display: inline-block;
+
+
+}
+body #fileUIContainer .dg .closed li.title:before{
+    content: "\f078";
+}
+
+body #fileUIContainer .dg .cr.function i {
+    width: 30px;
+    text-align: center;
+}
+
+body #fileUIContainer .dg.main .close-button {
+    display: none;
+}
+
+
+
+#previewUIwrapper{
+    height:195px;
+    /*    margin-left:4px; */
+    background:#1a1a1a;
+    border-left: 3px solid #FF8F19;
+    visibility: hidden;
+}
+
+.recentName{
+    width: 110px;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    float: left;
+}
+
+body #fileUIContainer .dg .cr.function i.removeFromStorage{
+    width: 30px;
+    float: right;
+    vertical-align: middle;
+    line-height: 30px;
+    border-left: solid 1px #ccc;
+}
+
+#savedHint {
+    display: none;
+    font-size: 7px;
+    color: #FF3333;
+    margin-left: 5px;
+    line-height: 20px;
+    vertical-align: middle;
+    width: 30px;
+}
+
+#loadingMask{
+    display: none;
+    width: 90%;
+    position:absolute;
+    opacity:1;
+    background:#eeeeee;
+    left:0px;
+    right:0px;
+    top:0px;
+    bottom:0px;
+
+}
+#loadingMask i{
+    width:100%;  text-align: center; font-size:50px; color:#c1c1c1; margin-top:35%;
+}
+
+#shareArea{
+    position:absolute;
+    z-index: 999;
+    left: 10px;
+    bottom: 10px;
+    float: left;
+    width: 156px;
+    opacity: 0.7;
+}
+
+#googleBadge{
+    width: 120px;
+    height: auto;
+    position: relative;
+    display: block;
+    float: left;
+}
+#googleBadge img{
+    border: solid 1px #ddd;
+    overflow: hidden;
+    border-radius: 4px;
+    width: 100%;
+}
+
+#shareArea .others{
+    float: left; display: block;
+    width: 30px;
+}
+
+#shareArea .others .fa{
+    font-size: 23px;
+    color: #000000;
+}
+
+#tipBtn {
+    cursor: pointer;
+    color: #000000;
+}
+
+#tipBtn i.fa {
+    font-size: 28px;
+}
+
+#tip {
+    padding-left: 160px;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 95px;
+    position: absolute;
+    z-index: 10;
+    background: #000000;
+    color: #ffffff;
+    opacity: 0.5;
+    font-size: 12px;
+
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+#tip.hide {
+    bottom: -100px;
+    opacity: 0;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+#tip p{
+    font-size: 14px;
+    font-weight: bold;
+    vertical-align: middle;
+    border-bottom: outset 1px #ffffff;
+    margin-left: -5px;
+    padding-left: 10px;
+}
+
+#tip ul{
+    padding-left: 20px;
+    list-style-type: square;
+}
+
+
+#tip .modeTip{
+    display: none;
+}
+
+#tip.edit .modeTip.edit{
+    display: block;
+}
+
+
+#tip.contouring .modeTip.contouring{
+    display: block;
+}
+
+#tip.contoured .modeTip.contoured{
+    display: block;
+}
+
+#tip.display .modeTip.display{
+    display: block;
+}
+
+.social-container {
+    position: absolute;
+    bottom: 5px;
+    left: 45%;
+    margin-left: -190px;
+    margin-top: -50px;
+    width: 380px;
+    height: auto;
+    opacity: 0.4;
+}
+.social-container .links {
+    text-align: center;
+    bottom: 0px;
+}
+.social-container .links a {
+    margin: 0 10px;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+}
+.social-container .links a:hover {
+    color: #ED452A;
+}
+
+#tutorialDiv {
+    margin-right: 100px;
+    position: fixed;
+    z-index: 1000;
+    bottom:10px;
+    right: 150px;
+}
+
+.videoLink{
+    text-decoration: none;
+    font-weight: bold;
+    color: #E63F00;
+    margin: 0 3px;
+}
+
+.videoLink i{
+    font-size: 20px;
+    vertical-align: middle;
+}
+.videoLink.youtube{
+    color: #E63F00;
+}
+
+.videoLink.gif{
+    color: #1989FF;
+}
